@@ -13,7 +13,7 @@ services:
       - ${APP_PORT}:${APP_PORT}
 
   db:
-    image: mysql
+    image: mysql:8.0.33
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
     environment:
@@ -22,8 +22,8 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
-      - ${MYSQL_PORT}:${MYSQL_PORT}
+      - ${MYSQL_EX_PORT}:${MYSQL_IN_PORT}
     expose:
-      - ${MYSQL_PORT}
+      - ${MYSQL_EX_PORT}
     volumes:
       - ./db:/var/lib/mysql

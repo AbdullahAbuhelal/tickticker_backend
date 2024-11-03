@@ -2,6 +2,9 @@ FROM python:3.11
 RUN echo "Projected Started"
 WORKDIR /usr/src/app
 
+RUN apt-get update\
+    && apt-get install -y gettext
+
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
